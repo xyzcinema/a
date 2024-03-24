@@ -80,7 +80,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
 
         text = BotTheme('USER_SETTING', NAME=name, ID=user_id, USERNAME=f'@{from_user.username}', LANG=Language.get(lc).display_name() if (lc := from_user.language_code) else "N/A", DC=from_user.dc_id)
         
-        button = buttons.build_menu(1)
+        button = buttons.build_menu(2)
     elif key == 'universal':
         ytopt = 'Not Exists' if (val:=user_dict.get('yt_opt', config_dict.get('YT_DLP_OPTIONS', ''))) == '' else val
         buttons.ibutton(f"{'✅️' if ytopt != 'Not Exists' else ''} YT-DLP Options", f"userset {user_id} yt_opt")
@@ -264,20 +264,12 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
 
 async def update_user_settings(query, key=None, edit_type=None, edit_mode=None, msg=None, sdirect=False):
     msg, button = await get_user_settings(msg.from_user if sdirect else query.from_user, key, edit_type, edit_mode)
-    user_id = query.from_user.id
-    thumbnail = f"Thumbnails/{user_id}.jpg"
-    if not ospath.exists(thumbnail):
-        thumbnail = 'https://graph.org/file/73ae908d18c6b38038071.jpg'
-    await editMessage(query if sdirect else query.message, msg, button, thumbnail)
+    await editMessage(query if sdirect else query.message, msg, button)
 
 async def user_settings(client, message):
     if len(message.command) > 1 and (message.command[1] == '-s' or message.command[1] == '-set'):
         set_arg = message.command[2].strip() if len(message.command) > 2 else None
-        user_id = message.from_user.id
-        thumbnail = f"Thumbnails/{user_id}.jpg"
-        if not ospath.exists(thumbnail):
-            thumbnail = 'https://graph.org/file/73ae908d18c6b38038071.jpg'
-        msg = await sendMessage(message, '<i>Fetching Settings...</i>', thumbnail)
+        msg = await sendMessage(message, '<i>Fetching Settings...</i>')
         if set_arg and (reply_to := message.reply_to_message):
             if message.from_user.id != reply_to.from_user.id:
                 return await editMessage(msg, '<i>Reply to Your Own Message for Setting via Args Directly</i>')
@@ -306,11 +298,7 @@ async def user_settings(client, message):
         from_user = message.from_user
         handler_dict[from_user.id] = False
         msg, button = await get_user_settings(from_user)
-        user_id = message.from_user.id
-        thumbnail = f"Thumbnails/{user_id}.jpg"
-        if not ospath.exists(thumbnail):
-            thumbnail = 'https://graph.org/file/73ae908d18c6b38038071.jpg'
-        await sendMessage(message, msg, button, thumbnail)
+        await sendMessage(message, msg, button)
 
 
 async def set_custom(client, message, pre_event, key, direct=False):
