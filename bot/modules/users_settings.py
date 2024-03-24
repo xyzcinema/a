@@ -269,7 +269,7 @@ async def update_user_settings(query, key=None, edit_type=None, edit_mode=None, 
 async def user_settings(client, message):
     if len(message.command) > 1 and (message.command[1] == '-s' or message.command[1] == '-set'):
         set_arg = message.command[2].strip() if len(message.command) > 2 else None
-        msg = await sendMessage(message, '<i>Fetching Settings...</i>')
+        msg = await sendMessage(message, '<i>Fetching Settings...</i>', photo='IMAGES')
         if set_arg and (reply_to := message.reply_to_message):
             if message.from_user.id != reply_to.from_user.id:
                 return await editMessage(msg, '<i>Reply to Your Own Message for Setting via Args Directly</i>')
@@ -298,7 +298,7 @@ async def user_settings(client, message):
         from_user = message.from_user
         handler_dict[from_user.id] = False
         msg, button = await get_user_settings(from_user)
-        await sendMessage(message, msg, button)
+        await sendMessage(message, msg, button, 'IMAGES')
 
 
 async def set_custom(client, message, pre_event, key, direct=False):
