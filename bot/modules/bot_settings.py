@@ -492,48 +492,48 @@ async def load_config():
     DEF_IMDB_TEMP  = environ.get('IMDB_TEMPLATE', '')
     if len(DEF_IMDB_TEMP) == 0:
         DEF_IMDB_TEMP = '''<b>Title: </b> {title} [{year}]
-<b>Also Known As:</b> {aka}
-<b>Rating ⭐️:</b> <i>{rating}</i>
-<b>Release Info: </b> <a href="{url_releaseinfo}">{release_date}</a>
-<b>Genre: </b>{genres}
-<b>IMDb URL:</b> {url}
-<b>Language: </b>{languages}
-<b>Country of Origin : </b> {countries}
+<b>Also Known As :</b> {aka}
+<b>Rating ⭐️ :</b> <i>{rating}</i>
+<b>Release Info :</b> <a href="{url_releaseinfo}">{release_date}</a>
+<b>Genre :</b> {genres}
+<b>IMDb URL :</b> {url}
+<b>Language :</b> {languages}
+<b>Country of Origin :</b> {countries}
 
-<b>Story Line: </b><code>{plot}</code>
+<b>Story Line :</b> <code>{plot}</code>
 
 <a href="{url_cast}">Read More ...</a>'''
 
     DEF_ANI_TEMP  = environ.get('ANIME_TEMPLATE', '')
     if len(DEF_ANI_TEMP) == 0:
         DEF_ANI_TEMP = '''<b>{ro_title}</b>({na_title})
-<b>Format</b>: <code>{format}</code>
-<b>Status</b>: <code>{status}</code>
-<b>Start Date</b>: <code>{startdate}</code>
-<b>End Date</b>: <code>{enddate}</code>
-<b>Season</b>: <code>{season}</code>
-<b>Country</b>: {country}
-<b>Episodes</b>: <code>{episodes}</code>
-<b>Duration</b>: <code>{duration}</code>
-<b>Average Score</b>: <code>{avgscore}</code>
-<b>Genres</b>: {genres}
-<b>Hashtag</b>: {hashtag}
-<b>Studios</b>: {studios}
+<b>Format :</b> <code>{format}</code>
+<b>Status :</b> <code>{status}</code>
+<b>Start Date :</b> <code>{startdate}</code>
+<b>End Date :</b> <code>{enddate}</code>
+<b>Season :</b> <code>{season}</code>
+<b>Country :</b> {country}
+<b>Episodes :</b> <code>{episodes}</code>
+<b>Duration :</b> <code>{duration}</code>
+<b>Average Score :</b> <code>{avgscore}</code>
+<b>Genres :</b> {genres}
+<b>Hashtag :</b> {hashtag}
+<b>Studios :</b> {studios}
 
-<b>Description</b>: <i>{description}</i>'''
+<b>Description :</b> <i>{description}</i>'''
 
     MDL_TEMPLATE = environ.get('MDL_TEMPLATE', '')
     if len(MDL_TEMPLATE) == 0:
         MDL_TEMPLATE = '''<b>Title:</b> {title}
-<b>Also Known As:</b> {aka}
-<b>Rating ⭐️:</b> <i>{rating}</i>
-<b>Release Info:</b> {aired_date}
-<b>Genre:</b> {genres}
-<b>MyDramaList URL:</b> {url}
-<b>Language:</b> #Korean
-<b>Country of Origin:</b> {country}
+<b>Also Known As :</b> {aka}
+<b>Rating ⭐️ :</b> <i>{rating}</i>
+<b>Release Info :</b> {aired_date}
+<b>Genre :</b> {genres}
+<b>MyDramaList URL :</b> {url}
+<b>Language :</b> #Korean
+<b>Country Of Origin :</b> {country}
 
-<b>Story Line:</b> {synopsis}
+<b>Story Line :</b> {synopsis}
 
 <a href='{url}'>Read More ...</a>'''
     
