@@ -436,26 +436,13 @@ class MirrorLeechListener:
             btn_added = False
 
             if not files:
-                await sendMessage(self.message, msg, photo=self.random_pic)
+                if self.isPrivate:
+                    msg += '<b>Files have not been sent for an unspecified reason</b>'
+                await sendMessage(self.message, msg)
             else:
-                btn = ButtonMaker()
-                saved = False
-                if self.source_url and config_dict['SOURCE_LINK']:
-                    btn.ubutton(BotTheme('SOURCE_URL'), self.source_url)
-                if self.isSuperGroup:
-                    btn = extra_btns(btn)[0]
-                message = msg
-                btns = btn.build_menu(2)
-                buttons = btn
-                if self.isSuperGroup and not self.isPM:
-                    message += BotTheme('L_LL_MSG')
-                elif self.isSuperGroup and self.isPM:
-                    message += BotTheme('L_LL_MSG')
-                    message += BotTheme('L_BOT_MSG')
-                    buttons.ibutton(BotTheme('CHECK_PM'), f"wzmlx {user_id} botpm", 'header')
-                if config_dict['SAFE_MODE'] and self.isSuperGroup:
-                    await sendMessage(self.message, message, buttons.build_menu(2), photo=self.random_pic)
-                fmsg = '\n'
+                attachmsg = True
+                fmsg, totalmsg = '\n\n', ''
+                lmsg = '<b>Files have been sent. Access them via the provided links.</b>'
                 for index, (link, name) in enumerate(files.items(), start=1):
                     fmsg += f"{index}. <a href='{link}'>{name}</a>\n"
                     if len(msg.encode() + fmsg.encode()) > (4000 if len(config_dict['IMAGES']) == 0 else 1000):
