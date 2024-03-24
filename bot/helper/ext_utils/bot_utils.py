@@ -564,7 +564,7 @@ async def get_stats(event, key="home"):
         if await aiopath.exists('.git'):
             last_commit = (await cmd_exec("git log -1 --pretty='%cd ( %cr )' --date=format-local:'%d/%m/%Y'", True))[0]
             changelog = (await cmd_exec("git log -1 --pretty=format:'<code>%s</code> <b>By</b> %an'", True))[0]
-        official_v = (await cmd_exec("curl -o latestversion.py https://gitlab.com/mysterysd.sd/WZML-X/-/raw/hk_wzmlx/bot/version.py -s && python3 latestversion.py && rm latestversion.py", True))[0]
+        official_v = (await cmd_exec("curl -o latestversion.py https://github.com/jishusinha/WZML-X/-/raw/hk_wzmlx/bot/version.py -s && python3 latestversion.py && rm latestversion.py", True))[0]
         msg = BotTheme('REPO_STATS',
             last_commit=last_commit,
             bot_version=get_version(),
@@ -662,7 +662,7 @@ async def checking_access(user_id, button=None):
             button = ButtonMaker()
         encrypt_url = b64encode(f"{token}&&{user_id}".encode()).decode()
         button.ubutton('Generate New Token', short_url(f'https://t.me/{bot_name}?start={encrypt_url}'))
-        return f'<i>Temporary Token has been expired,</i> Kindly generate a New Temp Token to start using bot Again.\n<b>Validity :</b> <code>{get_readable_time(config_dict["TOKEN_TIMEOUT"])}</code>', button
+        return f'<i>Temporary Token Has Been Expired, </i> \n\nKindly Generate A New Temp Token To Start Using Bot Again.\n\n<b>Validity :</b> <code>{get_readable_time(config_dict["TOKEN_TIMEOUT"])}</code>', button
     return None, button
 
 
