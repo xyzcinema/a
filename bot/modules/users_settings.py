@@ -306,6 +306,10 @@ async def user_settings(client, message):
         from_user = message.from_user
         handler_dict[from_user.id] = False
         msg, button = await get_user_settings(from_user)
+        user_id = message.from_user.id
+        thumbnail = f"Thumbnails/{user_id}.jpg"
+        if not ospath.exists(thumbnail):
+            thumbnail = 'https://graph.org/file/73ae908d18c6b38038071.jpg'
         await sendMessage(message, msg, button, thumbnail)
 
 
