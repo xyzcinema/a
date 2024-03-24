@@ -69,7 +69,7 @@ class ZipStatus:
             self.__listener.suproc.kill()
         else:
             self.__listener.suproc = 'cancelled'
-        await self.__listener.onUploadError('archiving stopped by user!')
+        await self.__listener.onUploadError('Archiving stopped by user!')
 
 
     def eng(self):
