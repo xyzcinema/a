@@ -110,7 +110,7 @@ class Aria2Status:
         else:
             if self.queued:
                 LOGGER.info(f'Cancelling QueueDl: {self.name()}')
-                msg = 'task have been removed from queue/download'
+                msg = 'Task have been removed from queue/download'
             else:
                 LOGGER.info(f"Cancelling Download: {self.name()}")
                 msg = 'Download stopped by user!'
