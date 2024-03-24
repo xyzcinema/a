@@ -492,10 +492,10 @@ async def compare_versions(v1, v2):
     for i in range(3):
         v1_part, v2_part = v1_parts[i], v2_parts[i]
         if v1_part < v2_part:
-            return "New Version Update is Available! Check Now!"
+            return "New Version Update Is Available! Check Now!"
         elif v1_part > v2_part:
-            return "More Updated! Kindly Contribute in Official"
-    return "Already up to date with latest version"
+            return "More Updated! Kindly Contribute In Official"
+    return "Already Up To Date With Latest Version"
 
 
 async def get_stats(event, key="home"):
@@ -662,7 +662,7 @@ async def checking_access(user_id, button=None):
             button = ButtonMaker()
         encrypt_url = b64encode(f"{token}&&{user_id}".encode()).decode()
         button.ubutton('Generate New Token', short_url(f'https://t.me/{bot_name}?start={encrypt_url}'))
-        return f'<i>Temporary Token Has Been Expired, </i> \n\nKindly Generate A New Temp Token To Start Using Bot Again.\n\n<b>Validity :</b> <code>{get_readable_time(config_dict["TOKEN_TIMEOUT"])}</code>', button
+        return f'Temporary Token Has Been Expired, \n\nKindly Generate A New Temporary Token To Start Using Bot Again.\n\n<b>Validity :</b> <code>{get_readable_time(config_dict["TOKEN_TIMEOUT"])}</code>', button
     return None, button
 
 
