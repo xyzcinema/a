@@ -45,7 +45,7 @@ class SplitStatus:
             self.__listener.suproc.kill()
         else:
             self.__listener.suproc = 'cancelled'
-        await self.__listener.onUploadError('splitting stopped by user!')
+        await self.__listener.onUploadError('Splitting stopped by user!')
 
 
     def eng(self):
