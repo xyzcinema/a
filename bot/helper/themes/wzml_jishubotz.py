@@ -6,7 +6,7 @@ class WZMLStyle:
     ST_BN1_URL = 'https://t.me/Madflix_Bots'
     ST_BN2_NAME = '💬 Support'
     ST_BN2_URL = 'https://t.me/MadflixBots_Support'
-    ST_MSG = '''I Can Upload Files, Links, Torrents, etc. to Telegram, Google Drive, DDL Servers and Rclone Supported Sites!\n\n<b>Type /help to get a list of available commands</b>'''
+    ST_MSG = '''I Can Upload Files, Links, Torrents, etc. to Telegram, Google Drive, DDL Servers and Rclone Supported Sites!\n\n<b>Type {help_command} to get a list of available commands</b>'''
     ST_BOTPM = '''<b>Bot PM Initiated Successfully!\n\nI Will Send All Your Files And Links Here.</b>'''
     ST_UNAUTH = '''<b>⚠️ Access Denied !</b>'''
     # ---------------------
