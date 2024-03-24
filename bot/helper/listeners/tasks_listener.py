@@ -436,7 +436,7 @@ class MirrorLeechListener:
             btn_added = False
 
             if not files:
-                await sendMessage(self.message, msg, photo=self.random_pic)
+                await sendMessage(self.message, msg) # photo=self.random_pic
             else:
                 btn = ButtonMaker()
                 saved = False
