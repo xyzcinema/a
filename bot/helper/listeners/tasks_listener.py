@@ -468,7 +468,7 @@ class MirrorLeechListener:
                             if config_dict['SAVE_MSG'] and not saved and self.isSuperGroup:
                                 saved = True
                                 buttons.ibutton(BotTheme('SAVE_MSG'), 'save', 'footer')
-                            await sendMessage(self.message, message + fmsg, buttons.build_menu(2), photo=self.random_pic)
+                            await sendMessage(self.message, message, buttons.build_menu(2), photo=self.random_pic)
                         await sleep(1.5)
                         fmsg = ''
 
@@ -482,7 +482,7 @@ class MirrorLeechListener:
                         if config_dict['SAVE_MSG'] and not saved and self.isSuperGroup:
                             saved = True
                             buttons.ibutton(BotTheme('SAVE_MSG'), 'save', 'footer')
-                        await sendMessage(self.message, message , buttons.build_menu(2), photo=self.random_pic)
+                        await sendMessage(self.message, message, buttons.build_menu(2), photo=self.random_pic)
 
             if self.seed:
                 if self.newDir:
