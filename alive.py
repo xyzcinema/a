@@ -2,6 +2,9 @@ from time import sleep
 from requests import get as rget
 from os import environ
 from logging import error as logerror
+import pyrogram.utils
+
+pyrogram.utils.MIN_CHANNEL_ID = -1009147483647
 
 BASE_URL = environ.get('BASE_URL', None)
 try:
