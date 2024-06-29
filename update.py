@@ -5,6 +5,9 @@ from pkg_resources import working_set
 from requests import get as rget
 from dotenv import load_dotenv, dotenv_values
 from pymongo import MongoClient
+import pyrogram.utils
+
+pyrogram.utils.MIN_CHANNEL_ID = -1009147483647
 
 if ospath.exists('log.txt'):
     with open('log.txt', 'r+') as f:
