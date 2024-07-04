@@ -439,7 +439,7 @@ class MirrorLeechListener:
     async def onUploadComplete(self, link, size, files, folders, mime_type, name, rclonePath='', private=False):
         if self.isSuperGroup and config_dict['INCOMPLETE_TASK_NOTIFIER'] and DATABASE_URL:
             await DbManger().rm_complete_task(self.message.link)
-        name, _ = await format_filename(name, user_id, isMirror=not self.isLeech)
+        name, _ = await format_filename(name, self.user_id, isMirror=not self.isLeech)
         msg = BotTheme('NAME', Name="Task has been Completed!"if config_dict['SAFE_MODE'] and self.isSuperGroup else escape(name))
         msg += BotTheme('SIZE', Size=get_readable_file_size(size))
         msg += BotTheme('ELAPSE', Time=get_readable_time(time() - self.message.date.timestamp()))
@@ -452,7 +452,7 @@ class MirrorLeechListener:
             if mime_type != 0:
                 msg += BotTheme('L_CORRUPTED_FILES', Corrupt=mime_type)
             msg += BotTheme('L_CC', Tag=self.tag)
-            btn_added = False
+            # btn_added = False
 
             if not files:
                 await sendMessage(self.message, msg, photo=self.random_pic)
@@ -470,7 +470,7 @@ class MirrorLeechListener:
                     message += BotTheme('L_LL_MSG')
                 elif self.isSuperGroup and self.isPM:
                     message += BotTheme('L_BOT_MSG')
-                    buttons.ibutton(BotTheme('CHECK_PM'), f"wzmlx {user_id} botpm", 'header')
+                    buttons.ibutton(BotTheme('CHECK_PM'), f"wzmlx {self.user_id} botpm", 'header')
                 if config_dict['SAFE_MODE'] and self.isSuperGroup:
                     await sendMessage(self.message, message, buttons.build_menu(2), photo=self.random_pic)
                 fmsg = '\n'
@@ -520,7 +520,7 @@ class MirrorLeechListener:
                 if (is_DDL := isinstance(link, dict)):
                     for dlup, dlink in link.items():
                         buttons.ubutton(BotTheme('DDL_LINK', Serv=dlup), dlink)
-                elif link and (user_id == OWNER_ID or not config_dict['DISABLE_DRIVE_LINK']):
+                elif link and (self.user_id == OWNER_ID or not config_dict['DISABLE_DRIVE_LINK']):
                         buttons.ubutton(BotTheme('CLOUD_LINK'), link)
                 else:
                     msg += BotTheme('RCPATH', RCpath=rclonePath)
@@ -582,7 +582,7 @@ class MirrorLeechListener:
                         await sendMessage(self.botpmmsg, message, buttons.build_menu(2), photo=self.random_pic)
                         if config_dict['SAVE_MSG']:
                             s_btn.ibutton(BotTheme('SAVE_MSG'), 'save', 'footer')
-                        s_btn.ibutton(BotTheme('CHECK_PM'), f"wzmlx {user_id} botpm", 'header')
+                        s_btn.ibutton(BotTheme('CHECK_PM'), f"wzmlx {self.user_id} botpm", 'header')
                         await sendMessage(self.message, message, s_btn.build_menu(2), photo=self.random_pic)
                 else:
                     if self.source_url and config_dict['SOURCE_LINK']:
