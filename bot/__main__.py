@@ -33,10 +33,6 @@ from .helper.themes import BotTheme
 from .modules import authorize, clone, gd_count, gd_delete, gd_list, cancel_mirror, mirror_leech, status, torrent_search, torrent_select, ytdlp, \
                      rss, shell, eval, users_settings, bot_settings, speedtest, save_msg, images, imdb, anilist, mediainfo, mydramalist, gen_pyro_sess, \
                      gd_clean, broadcast, category_select
-import pyrogram.utils
-
-pyrogram.utils.MIN_CHANNEL_ID = -1009147483647
-
 
 async def stats(client, message):
     msg, btns = await get_stats(message)
@@ -257,9 +253,9 @@ async def main():
     bot.add_handler(MessageHandler(
         login, filters=command(BotCommands.LoginCommand) & private))
     bot.add_handler(MessageHandler(log, filters=command(
-        BotCommands.LogCommand) & CustomFilters.sudo))
+        BotCommands.LogCommand) & CustomFilters.owner))
     bot.add_handler(MessageHandler(restart, filters=command(
-        BotCommands.RestartCommand) & CustomFilters.sudo))
+        BotCommands.RestartCommand) & CustomFilters.owner))
     bot.add_handler(MessageHandler(ping, filters=command(
         BotCommands.PingCommand) & CustomFilters.authorized & ~CustomFilters.blacklisted))
     bot.add_handler(MessageHandler(bot_help, filters=command(
