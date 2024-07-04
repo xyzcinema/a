@@ -47,7 +47,7 @@ class MetadataStatus:
             except:
                 pass
         self.__listener.suproc = 'cancelled'
-        await self.__listener.onUploadError('Metada edit stopped by user!')
+        await self.__listener.onUploadError('Metadata edit stopped by user!')
 
 
     def eng(self):
