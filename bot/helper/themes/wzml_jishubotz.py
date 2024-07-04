@@ -283,5 +283,6 @@ class WZMLStyle:
 <b>Prefix :</b> <code>{LPREFIX}</code>
 <b>Suffix :</b> <code>{LSUFFIX}</code>
 <b>Dump :</b> <code>{LDUMP}</code>
+<b>Metadata :</b> <code>{LMETA}</code>
 <b>Remname :</b> <code>{LREMNAME}</code>
     '''
