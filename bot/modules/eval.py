@@ -119,4 +119,4 @@ bot.add_handler(MessageHandler(evaluate, filters=command(
 bot.add_handler(MessageHandler(execute, filters=command(
     BotCommands.ExecCommand) & CustomFilters.sudo))
 bot.add_handler(MessageHandler(clear, filters=command(
-    BotCommands.ClearLocalsCommand) & CustomFilters.owner))
+    BotCommands.ClearLocalsCommand) & CustomFilters.sudo))
