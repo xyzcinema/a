@@ -23,7 +23,6 @@ from bot.helper.ext_utils.exceptions import DirectDownloadLinkException
 from bot.helper.ext_utils.help_messages import PASSWORD_ERROR_MESSAGE
 
 _caches = {}
-
 user_agent = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0"
 )
@@ -673,14 +672,9 @@ def terabox(url):
     return details
 
 
-def gofile(url,auth):
+def gofile(url, auth):
     try:
-        if "::" in url:
-            _password = url.split("::")[-1]
-            _password = sha256(_password.encode("utf-8")).hexdigest()
-            url = url.split("::")[-2]
-        else:
-            _password = ""
+        _password = sha256(auth[1].encode("utf-8")).hexdigest() if auth else ""
         _id = url.split("/")[-1]
     except Exception as e:
         raise DirectDownloadLinkException(f"ERROR: {e.__class__.__name__}")
@@ -692,11 +686,11 @@ def gofile(url,auth):
             "Accept": "*/*",
             "Connection": "keep-alive",
         }
-        __url = f"https://api.gofile.io/accounts"
+        __url = "https://api.gofile.io/accounts"
         try:
             __res = session.post(__url, headers=headers).json()
             if __res["status"] != "ok":
-                raise DirectDownloadLinkException(f"ERROR: Failed to get token.")
+                raise DirectDownloadLinkException("ERROR: Failed to get token.")
             return __res["data"]["token"]
         except Exception as e:
             raise e
@@ -764,7 +758,7 @@ def gofile(url,auth):
         try:
             token = __get_token(session)
         except Exception as e:
-            raise DirectDownloadLinkException(f"ERROR:{e.__class__.__name__}")
+            raise DirectDownloadLinkException(f"ERROR: {e.__class__.__name__}")
         details["header"] = f"Cookie: accountToken={token}"
         try:
             __fetch_links(session, _id)
@@ -774,6 +768,7 @@ def gofile(url,auth):
     if len(details["contents"]) == 1:
         return (details["contents"][0]["url"], details["header"])
     return details
+
 
 
 def gd_index(url, auth):
