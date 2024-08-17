@@ -180,7 +180,7 @@ async def join_files(path):
 
 
 async def edit_metadata(listener, base_dir: str, media_file: str, outfile: str, metadata: str = ''):
-    cmd = [bot_cache['pkgs'][2], '-hide_banner', '-ignore_unknown', '-i', media_file, '-metadata', f'title={metadata}', '-metadata:s:v',
+    cmd = [bot_cache['pkgs'][2], '-hide_banner', '-loglevel', 'error', '-ignore_unknown', '-i', media_file, '-metadata', f'title={metadata}', '-metadata:s:v',
            f'title={metadata}', '-metadata:s:a', f'title={metadata}', '-metadata:s:s', f'title={metadata}', '-metadata', f'author=@MadflixOfficials', '-metadata', f'artist=@MadflixOfficials', '-map', '0:v:0?',
            '-map', '0:a:?', '-map', '0:s:?', '-c:v', 'copy', '-c:a', 'copy', '-c:s', 'copy', outfile, '-y']
     listener.suproc = await create_subprocess_exec(*cmd, stderr=PIPE)
