@@ -53,7 +53,7 @@ class MirrorStatus:
     STATUS_ARCHIVING   = "Archive"
     STATUS_EXTRACTING  = "Extract"
     STATUS_SPLITTING   = "Split"
-    STATUS_METADATA    = "MetaEdit"
+    STATUS_METADATA    = "Adding Metadata"
     STATUS_CHECKING    = "CheckUp"
     STATUS_SEEDING     = "Seed"
 
