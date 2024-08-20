@@ -70,9 +70,9 @@ UPSTREAM_REPO = environ.get('UPSTREAM_REPO', '')
 if len(UPSTREAM_REPO) == 0:
     UPSTREAM_REPO = "https://github.com/brishabchy1991/a"
 
-UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'meta')
+UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
 if len(UPSTREAM_BRANCH) == 0:
-    UPSTREAM_BRANCH = 'hk_wzmlx'
+    UPSTREAM_BRANCH = 'meta'
 
 if UPSTREAM_REPO is not None:
     if ospath.exists('.git'):
